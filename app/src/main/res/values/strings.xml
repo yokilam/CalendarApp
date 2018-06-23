@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">CalendarApp</string>
+
+    <string name="prev_month">Previous Month</string>
+    <string name="nextMonth">Next Month</string>
+
+    //Day's short keyword
+    <string name="monday">MON</string>
+    <string name="tuesday">TUE</string>
+    <string name="wednesday">WED</string>
+    <string name="thursday">THU</string>
+    <string name="friday">FRI</string>
+    <string name="saturday">SAT</string>
+    <string name="sunday">SUN</string>
+
+</resources>
