@@ -11,14 +11,17 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp">
 
         <TextView
             android:id="@+id/current_month"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/green"
-            android:textSize="28sp" />
+            android:textColor="@color/gray"
+            android:textSize="28sp"
+            tools:text="June"/>
 
         <TextView
             android:id="@+id/current_year"
@@ -27,7 +30,7 @@
             android:paddingLeft="@dimen/space"
             android:textColor="@color/gray"
             android:textSize="28sp"
-            tools:text="June 2018"/>
+            tools:text="2018"/>
 
     </LinearLayout>
 
