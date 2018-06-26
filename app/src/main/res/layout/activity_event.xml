@@ -74,19 +74,19 @@
             android:padding="10dp" />
 
         <TextView
-            android:id="@+id/time"
+            android:id="@+id/start_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/et_date"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
-            android:text="Time" />
+            android:text="Start Time" />
 
         <EditText
             android:id="@+id/et_start_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/time"
+            android:layout_below="@+id/start_time"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
             android:background="@drawable/round_corner_shape"
@@ -94,12 +94,20 @@
             android:lines="1"
             android:padding="10dp" />
 
+        <TextView
+            android:id="@+id/end_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_start_time"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:text="End Time" />
 
         <EditText
             android:id="@+id/et_end_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/et_start_time"
+            android:layout_below="@+id/end_time"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
             android:background="@drawable/round_corner_shape"

@@ -12,7 +12,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import yoki.calendarapp.R;
 
-public class EventActivity extends AppCompatActivity {
+public class EventActivity extends AppCompatActivity implements View.OnClickListener {
 
     @BindView(R.id.et_event_name)
     EditText eventName;
@@ -34,57 +34,62 @@ public class EventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_event);
         ButterKnife.bind(this);
 
-        dialogFragment = new TimePickerFragment(globalTime, startTime, new EventActivity.GetTime() {
+        startTime.setOnClickListener(this);
+        endTime.setOnClickListener(this);
+
+//        startTime.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View v, boolean hasFocus) {
+//                if (hasFocus) {
+//                    dialogFragment.show(getSupportFragmentManager(), "timePicker");
+//                }
+//            }
+//        });
+//
+//        endTime.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+//            @Override
+//            public void onFocusChange(View v, boolean hasFocus) {
+//                if (hasFocus) {
+//                    dialogFragment.show(getSupportFragmentManager(), "timePicker");
+//                }
+//            }
+//        });
+
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EventActivity.this, CalendarActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void createDialogFragment(EditText edittext) {
+        dialogFragment = new TimePickerFragment(globalTime, edittext, new GetTime() {
             @Override
             public void getTimeMethod(int final_hours, int final_minute) {
                 hrsOfDay = final_hours;
                 minOfDay = final_minute;
             }
         });
-
-        startTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogFragment.show(getSupportFragmentManager(), "timePicker");
-            }
-        });
-
-        startTime.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    dialogFragment.show(getSupportFragmentManager(), "timePicker");
-                }
-            }
-        });
-
-        endTime.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogFragment.show(getSupportFragmentManager(), "timePicker");
-            }
-        });
-
-        endTime.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    dialogFragment.show(getSupportFragmentManager(), "timePicker");
-                }
-            }
-        });
-
-
-        submit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(EventActivity.this, CalendarActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
-     interface GetTime {
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.et_start_time:
+                createDialogFragment(startTime);
+                dialogFragment.show(getSupportFragmentManager(), "timePicker");
+                break;
+            case R.id.et_end_time:
+                createDialogFragment(endTime);
+                dialogFragment.show(getSupportFragmentManager(), "timePicker");
+                break;
+        }
+    }
+
+    interface GetTime {
         void getTimeMethod(int final_hours, int final_minute);
     }
 }
