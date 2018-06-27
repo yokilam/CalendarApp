@@ -11,22 +11,16 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@android:color/white">
 
-    <yoki.calendarapp.CalendarMobile.Util.MonthlyCalendar
+    <yoki.calendarapp.calendarMobile.util.MonthlyCalendar
         android:id="@+id/monthly_calendar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/add_event_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-        android:clickable="true"
-        app:fabSize="normal"
-        app:layout_anchor="@+id/monthly_calendar"
-        app:layout_anchorGravity="right|bottom"
-        app:rippleColor="@android:color/white"
-        app:srcCompat="@drawable/add"
-        tools:layout_editor_absoluteY="21dp" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/event_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
 
 </android.support.design.widget.CoordinatorLayout>

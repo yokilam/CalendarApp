@@ -1,7 +1,6 @@
-package yoki.calendarapp.CalendarMobile;
+package yoki.calendarapp.calendarMobile;
 
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +9,7 @@ import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import yoki.calendarapp.CalendarMobile.Util.MonthlyCalendar;
+import yoki.calendarapp.calendarMobile.util.MonthlyCalendar;
 import yoki.calendarapp.R;
 
 public class CalendarActivity extends AppCompatActivity {
@@ -30,7 +29,6 @@ public class CalendarActivity extends AppCompatActivity {
         currentMonth= calendar.get(Calendar.MONTH);
         currentYear= calendar.get(Calendar.YEAR);
 
-//        MonthlyCalendar monthlyCalendar=findViewById(R.id.monthly_calendar);
         monthlyCalendar.setUserCurrentMonthYear(currentMonth,currentYear);
 
         monthlyCalendar.setCallBack(new MonthlyCalendar.DayClickListener() {

@@ -9,14 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CalendarMobile.CalendarActivity">
+        <activity android:name=".calendarMobile.CalendarActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CalendarMobile.EventActivity"></activity>
+
+        <activity android:name=".calendarMobile.EventActivity"
+                android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>

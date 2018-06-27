@@ -1,10 +1,8 @@
-package yoki.calendarapp.CalendarMobile.Util;
+package yoki.calendarapp.calendarMobile.util;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.os.Build;
 import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -15,7 +13,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.Arrays;
 import java.util.Calendar;
 
 import yoki.calendarapp.R;

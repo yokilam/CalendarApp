@@ -1,4 +1,4 @@
-package yoki.calendarapp.CalendarMobile;
+package yoki.calendarapp.calendarMobile;
 
 import android.content.Intent;
 import android.os.Bundle;
