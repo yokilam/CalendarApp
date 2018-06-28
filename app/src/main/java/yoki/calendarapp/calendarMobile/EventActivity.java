@@ -2,14 +2,21 @@ package yoki.calendarapp.calendarMobile;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,9 +38,9 @@ public class EventActivity extends AppCompatActivity implements View.OnClickList
     private String globalTime = null;
     private DialogFragment dialogFragment;
     private int hrsOfDay, minOfDay;
-    private DatabaseReference ref;
-    private FirebaseDatabase database;
-    private String date;
+    private DatabaseReference monthReference;
+    private String date, month;
+    public Event event;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,26 +51,22 @@ public class EventActivity extends AppCompatActivity implements View.OnClickList
         startTime.setOnClickListener(this);
         endTime.setOnClickListener(this);
 
-        database = FirebaseDatabase.getInstance();
-        ref = database.getReference();
-
         DatabaseReference rootReference= FirebaseDatabase.getInstance().getReference();
-        DatabaseReference monthReference=rootReference.child("month");
-        final DatabaseReference dateReference= monthReference.child("date");
+        monthReference=rootReference.child("month");
 
         Intent intent= getIntent();
-        date=intent.getStringExtra("date");
-
+        date = intent.getStringExtra("date");
+        month = intent.getStringExtra("month");
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Event event= Event.from(date, eventName.getText().toString(), description.getText().toString(), startTime.getText().toString(), endTime.getText().toString());
-                    dateReference.setValue(date);
-                    dateReference.child("event").setValue(event);
+                Event event= Event.from(month,date, eventName.getText().toString(), description.getText().toString(), startTime.getText().toString(), endTime.getText().toString());
+                monthReference.setValue(month);
+                monthReference.child("date").child(date).setValue(event);
 
-//                Intent intent = new Intent(EventActivity.this, CalendarActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(EventActivity.this, CalendarActivity.class);
+                startActivity(intent);
             }
         });
     }

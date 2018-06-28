@@ -12,10 +12,12 @@ public class Event {
     public String startTime;
     public String endTime;
 
-    public static Event from(String date, String title, String description, String startTime, String endTime) {
+    public static Event from(String month, String date, String title, String description, String startTime, String endTime) {
         Event event= new Event();
+        event.month= month;
         event.date = date;
         event.title = title;
+        event.description=description;
         event.startTime = startTime;
         event.endTime = endTime;
         return event;

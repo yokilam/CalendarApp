@@ -3,6 +3,7 @@ package yoki.calendarapp.calendarMobile;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import java.util.Calendar;
@@ -34,10 +35,12 @@ public class CalendarActivity extends AppCompatActivity {
 
         monthlyCalendar.setCallBack(new MonthlyCalendar.DayClickListener() {
             @Override
-            public void onDayClick(View view, String dateValue) {
+            public void onDayClick(View view, String dateValue, String month) {
                 date=dateValue;
+                Log.d("picked date", "date picked: "+ date);
                 Intent intent= new Intent(CalendarActivity.this, EventActivity.class);
                 intent.putExtra("date", date);
+                intent.putExtra("month", month);
                 startActivity(intent);
             }
         });

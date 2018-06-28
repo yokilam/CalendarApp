@@ -87,7 +87,7 @@ public class CalendarDatabaseHelper extends SQLiteOpenHelper {
                     String description = cursor.getString(cursor.getColumnIndex("description"));
                     String startTime = cursor.getString(cursor.getColumnIndex("startTime"));
                     String endTime = cursor.getString(cursor.getColumnIndex("endTime"));
-                    events.add(Event.from(date, title, description, startTime, endTime));
+                    events.add(Event.from(month, date, title, description, startTime, endTime));
                 } while (cursor.moveToNext());
             }
         } catch (Exception e) {

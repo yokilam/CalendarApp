@@ -33,13 +33,13 @@ public class MonthlyCalendar extends LinearLayout {
             pickedDateDay, pickedDateMonth, pickedDateYear;;
     private LinearLayout.LayoutParams userButtonParams, defaultButtonParams;
     private DayClickListener myListener;
-
+    private String dateSelcted;
+    private String month;
 
     public MonthlyCalendar(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
-
 
     private void init(Context context) {
         DisplayMetrics metrics = getResources().getDisplayMetrics();
@@ -69,6 +69,7 @@ public class MonthlyCalendar extends LinearLayout {
         Log.d(TAG, "currentMonth: " + Calendar.MONTH);
         currentMonth.setText(ENG_MONTH_NAMES[currentDateMonth] + " ");
         currentYear.setText(String.valueOf(currentDateYear));
+        month= ENG_MONTH_NAMES[currentDateMonth];
 
         initializeDaysAndWeeks();
         if (userButtonParams != null) {
@@ -78,7 +79,6 @@ public class MonthlyCalendar extends LinearLayout {
         }
         addDaysInCalendar(defaultButtonParams, context, metrics);
         initCalendarWithDate(chosenYear, chosenMonth, chosenDateDay);
-
     }
 
     private void initCalendarWithDate(int year, int month, int date) {
@@ -182,8 +182,6 @@ public class MonthlyCalendar extends LinearLayout {
     }
 
     public void onDayClick(View view) {
-        myListener.onDayClick(view, String.valueOf(pickedDateDay));
-
         if (selectedDayButton != null) {
             if (chosenYear == currentDateYear
                     && chosenMonth == currentDateMonth
@@ -214,10 +212,13 @@ public class MonthlyCalendar extends LinearLayout {
             selectedDayButton.setTextColor(Color.WHITE);
         } else {
             selectedDayButton.setBackgroundColor(getResources().getColor(R.color.colorMainBgLight));
+            dateSelcted = selectedDayButton.getText().toString();
+            Log.d(TAG, "onDayClick: "+ dateSelcted);
             if (selectedDayButton.getCurrentTextColor() != Color.RED) {
                 selectedDayButton.setTextColor(Color.GRAY);
             }
         }
+        myListener.onDayClick(view, dateSelcted, month);
     }
 
 
@@ -273,7 +274,7 @@ public class MonthlyCalendar extends LinearLayout {
     }
 
     public interface DayClickListener {
-        void onDayClick(View view, String dateValue);
+        void onDayClick(View view, String dateValue, String month);
     }
 
     public void setCallBack(DayClickListener mListener) {
