@@ -51,7 +51,7 @@ public class EventActivity extends AppCompatActivity implements View.OnClickList
         startTime.setOnClickListener(this);
         endTime.setOnClickListener(this);
 
-        DatabaseReference rootReference= FirebaseDatabase.getInstance().getReference();
+        final DatabaseReference rootReference= FirebaseDatabase.getInstance().getReference();
         monthReference=rootReference.child("month");
 
         Intent intent= getIntent();
@@ -61,9 +61,9 @@ public class EventActivity extends AppCompatActivity implements View.OnClickList
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Event event= Event.from(month,date, eventName.getText().toString(), description.getText().toString(), startTime.getText().toString(), endTime.getText().toString());
-                monthReference.setValue(month);
-                monthReference.child("date").child(date).setValue(event);
+                Event event= Event.from(month, date, eventName.getText().toString(), description.getText().toString(), startTime.getText().toString(), endTime.getText().toString());
+                rootReference.child("month").child(month).child("date").child(date).setValue(event);
+//                monthReference.child("date").child(date).setValue(event);
 
                 Intent intent = new Intent(EventActivity.this, CalendarActivity.class);
                 startActivity(intent);
