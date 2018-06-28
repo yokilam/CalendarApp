@@ -5,7 +5,6 @@ package yoki.calendarapp.model;
  */
 
 public class Event {
-    public Integer id;
     public String month;
     public String date;
     public String title;
@@ -13,10 +12,8 @@ public class Event {
     public String startTime;
     public String endTime;
 
-    public static Event from(Integer id, String month, String date, String title, String description, String startTime, String endTime) {
+    public static Event from(String date, String title, String description, String startTime, String endTime) {
         Event event= new Event();
-        event.id = id;
-        event.month = month;
         event.date = date;
         event.title = title;
         event.startTime = startTime;

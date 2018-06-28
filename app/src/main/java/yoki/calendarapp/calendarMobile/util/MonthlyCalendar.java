@@ -134,39 +134,7 @@ public class MonthlyCalendar extends LinearLayout {
                 dayNumber++;
             }
         }
-//        } else {
-//            Log.d(TAG, "running else " );
-//            daysLeftInFirstWeek = 8;
-//            indexOfDayAfterLastDayOfMonth = daysLeftInFirstWeek + daysInCurrentMonth;
-//            for (int i = 8; i < 8 + daysInCurrentMonth; ++i) {
-//                if (currentDateMonth == chosenMonth
-//                        && currentDateYear == chosenYear
-//                        && dayNumber == currentDateDay) {
-//                    days[i].setBackgroundColor(getResources().getColor(R.color.pink));
-//                    days[i].setTextColor(Color.WHITE);
-//                } else {
-//                    days[i].setTextColor(Color.BLACK);
-//                    days[i].setBackgroundColor(Color.TRANSPARENT);
-//                }
-//
-//                int[] dateArr = new int[3];
-//                dateArr[0] = dayNumber;
-//                dateArr[1] = chosenMonth;
-//                dateArr[2] = chosenYear;
-//                days[i].setTag(dateArr);
-//                Log.d(TAG, "initCalendarWithDate: " + Arrays.toString(dateArr));
-//                days[i].setText(String.valueOf(dayNumber));
-//
-//                days[i].setOnClickListener(new OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        onDayClick(v);
-//                    }
-//                });
-//                dayNumber++;
-//            }
-//        }
-//
+
         if (month > 0){
             calendar.set(year, month - 1, 1);
         } else {
@@ -211,53 +179,10 @@ public class MonthlyCalendar extends LinearLayout {
                 }
             });
         }
-//
-//        int nextMonthDaysCounter = 1;
-//        for (int i = indexOfDayAfterLastDayOfMonth; i < days.length; ++i) {
-//            int[] dateArr = new int[3];
-//
-//            if (chosenMonth < 11) {
-//                if (currentDateMonth == chosenMonth + 1
-//                        && currentDateYear == chosenYear
-//                        && nextMonthDaysCounter == currentDateDay) {
-//                    days[i].setBackgroundColor(getResources().getColor(R.color.pink));
-//                } else {
-//                    days[i].setBackgroundColor(Color.TRANSPARENT);
-//                }
-//
-//                dateArr[0] = nextMonthDaysCounter;
-//                dateArr[1] = chosenMonth + 1;
-//                dateArr[2] = chosenYear;
-//            } else {
-//                if (currentDateMonth == 0
-//                        && currentDateYear == chosenYear + 1
-//                        && nextMonthDaysCounter == currentDateDay) {
-//                    days[i].setBackgroundColor(getResources().getColor(R.color.pink));
-//                } else {
-//                    days[i].setBackgroundColor(Color.TRANSPARENT);
-//                }
-//
-//                dateArr[0] = nextMonthDaysCounter;
-//                dateArr[1] = 0;
-//                dateArr[2] = chosenYear + 1;
-//            }
-//
-//            days[i].setTag(dateArr);
-//            days[i].setTextColor(getResources().getColor(R.color.customGrey));
-//            days[i].setText(String.valueOf(nextMonthDaysCounter++));
-//            days[i].setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    onDayClick(v);
-//                }
-//            });
-//        }
-//
-//        calendar.set(chosenYear, chosenMonth, chosenDateDay);
     }
 
     public void onDayClick(View view) {
-        myListener.onDayClick(view);
+        myListener.onDayClick(view, String.valueOf(pickedDateDay));
 
         if (selectedDayButton != null) {
             if (chosenYear == currentDateYear
@@ -348,7 +273,7 @@ public class MonthlyCalendar extends LinearLayout {
     }
 
     public interface DayClickListener {
-        void onDayClick(View view);
+        void onDayClick(View view, String dateValue);
     }
 
     public void setCallBack(DayClickListener mListener) {

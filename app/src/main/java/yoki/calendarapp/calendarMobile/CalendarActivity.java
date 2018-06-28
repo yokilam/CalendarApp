@@ -18,6 +18,7 @@ public class CalendarActivity extends AppCompatActivity {
 
     private Calendar calendar;
     private int currentMonth, currentDate, currentYear;
+    private String date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +34,10 @@ public class CalendarActivity extends AppCompatActivity {
 
         monthlyCalendar.setCallBack(new MonthlyCalendar.DayClickListener() {
             @Override
-            public void onDayClick(View view) {
+            public void onDayClick(View view, String dateValue) {
+                date=dateValue;
                 Intent intent= new Intent(CalendarActivity.this, EventActivity.class);
+                intent.putExtra("date", date);
                 startActivity(intent);
             }
         });

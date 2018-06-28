@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "840164988104",
+    "firebase_url": "https://calendarapp-8bbfc.firebaseio.com",
+    "project_id": "calendarapp-8bbfc",
+    "storage_bucket": "calendarapp-8bbfc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840164988104:android:9419ef063e70946f",
+        "android_client_info": {
+          "package_name": "yoki.calendarapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "840164988104-17v2s02d872vv22bfl51a0194md3n4k8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "yoki.calendarapp",
+            "certificate_hash": "85b8a0fa91fa2c4a525ea5de4c1bc21883bb5199"
+          }
+        },
+        {
+          "client_id": "840164988104-ual0obk3fcu96o3er2k30s6fc6rsii05.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBded9XXwnqNKmurlmw3IPsKSNDPfUpx6g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "840164988104-ual0obk3fcu96o3er2k30s6fc6rsii05.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
