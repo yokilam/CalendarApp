@@ -92,7 +92,8 @@
             android:background="@drawable/round_corner_shape"
             android:hint="Start time."
             android:lines="1"
-            android:padding="10dp" />
+            android:padding="10dp"
+            android:inputType="time"/>
 
         <TextView
             android:id="@+id/end_time"
@@ -111,6 +112,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="10dp"
             android:background="@drawable/round_corner_shape"
+            android:inputType="none"
             android:hint="End time."
             android:lines="1"
             android:padding="10dp" />

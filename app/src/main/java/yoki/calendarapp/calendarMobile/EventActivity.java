@@ -62,7 +62,7 @@ public class EventActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onClick(View v) {
                 Event event= Event.from(month, date, eventName.getText().toString(), description.getText().toString(), startTime.getText().toString(), endTime.getText().toString());
-                rootReference.child("month").child(month).child("date").child(date).setValue(event);
+                rootReference.child("month").child(month).child("event").child(date).setValue(event);
 
                 Intent intent = new Intent(EventActivity.this, CalendarActivity.class);
                 startActivity(intent);
