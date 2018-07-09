@@ -12,10 +12,6 @@ import java.util.List;
 import yoki.calendarapp.R;
 import yoki.calendarapp.model.Event;
 
-/**
- * Created by yokilam on 6/28/18.
- */
-
 public class EventAdapter extends RecyclerView.Adapter<EventViewHolder> {
 
     private List<Event> eventsList = Collections.emptyList();

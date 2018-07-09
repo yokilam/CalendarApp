@@ -1,9 +1,5 @@
 package yoki.calendarapp.model;
 
-/**
- * Created by yokilam on 6/26/18.
- */
-
 public class Event {
     public String month;
     public String date;

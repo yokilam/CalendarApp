@@ -13,17 +13,17 @@ import yoki.calendarapp.model.Event;
 import static android.content.ContentValues.TAG;
 
 public class EventViewHolder extends RecyclerView.ViewHolder {
-//    @BindView(R.id.event_date) TextView eventDate;
-//    @BindView(R.id.event_title) TextView eventTitle;
-//    @BindView(R.id.event_desc) TextView eventDesc;
-//    @BindView(R.id.event_start_time) TextView startTime;
-//    @BindView(R.id.event_end_time) TextView endTime;
-
-    private TextView eventDate;
-    private TextView eventTitle;
-    private TextView eventDesc;
-    private TextView startTime;
-    private TextView endTime;
+    @BindView(R.id.event_date) TextView eventDate;
+    @BindView(R.id.event_title) TextView eventTitle;
+    @BindView(R.id.event_desc) TextView eventDesc;
+    @BindView(R.id.event_start_time) TextView startTime;
+    @BindView(R.id.event_end_time) TextView endTime;
+//
+//    private TextView eventDate;
+//    private TextView eventTitle;
+//    private TextView eventDesc;
+//    private TextView startTime;
+//    private TextView endTime;
 
     public EventViewHolder(View itemView) {
         super(itemView);
@@ -41,9 +41,12 @@ public class EventViewHolder extends RecyclerView.ViewHolder {
         date.append(event.month).append(" ").append(event.date).append(": ");
         Log.d(TAG, "onBind: " + event.month + event.date);
         eventDate.setText(date.toString());
-        eventTitle.setText(event.title);
+        String eventName= "Event: " + event.title;
+        eventTitle.setText(eventName);
         eventDesc.setText(event.description);
-        startTime.setText(event.startTime);
-        endTime.setText(event.endTime);
+        String start= "Starts: " + event.startTime;
+        startTime.setText(start);
+        String end= "Ends: " + event.endTime;
+        endTime.setText(end);
     }
 }

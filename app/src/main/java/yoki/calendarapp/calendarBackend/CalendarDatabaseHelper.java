@@ -16,9 +16,17 @@ public class CalendarDatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "calendarDatabase";
     private static final int DATABASE_VERSION = 1;
     private static final String TABLE_EVENT = "event";
+    private static CalendarDatabaseHelper cInstance;
 
     public CalendarDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+    public static synchronized CalendarDatabaseHelper getInstance(Context context){
+        if(cInstance == null) {
+            cInstance = new CalendarDatabaseHelper(context.getApplicationContext());
+        }
+        return cInstance;
     }
 
     @Override

@@ -20,7 +20,7 @@ import yoki.calendarapp.R;
 import static android.content.ContentValues.TAG;
 
 public class MonthlyCalendar extends LinearLayout {
-    private static final String[] ENG_MONTH_NAMES = {"January", "February", "March", "April",
+    public static final String[] ENG_MONTH_NAMES = {"January", "February", "March", "April",
             "May", "June", "July", "August",
             "September", "October", "November", "December"};
     private Calendar calendar;
@@ -35,6 +35,7 @@ public class MonthlyCalendar extends LinearLayout {
     private DayClickListener myListener;
     private String dateSelcted;
     private String month;
+    private boolean isEvent;
 
     public MonthlyCalendar(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -153,7 +154,6 @@ public class MonthlyCalendar extends LinearLayout {
                 } else {
                     days[i].setBackgroundColor(Color.TRANSPARENT);
                 }
-
                 dateArr[0] = daysInPreviousMonth;
                 dateArr[1] = chosenMonth - 1;
                 dateArr[2] = chosenYear;
@@ -164,12 +164,10 @@ public class MonthlyCalendar extends LinearLayout {
                 } else {
                     days[i].setBackgroundColor(Color.TRANSPARENT);
                 }
-
                 dateArr[0] = daysInPreviousMonth;
                 dateArr[1] = 11;
                 dateArr[2] = chosenYear - 1;
             }
-
             days[i].setTag(dateArr);
             days[i].setText(String.valueOf(daysInPreviousMonth--));
             days[i].setOnClickListener(new View.OnClickListener() {
@@ -221,7 +219,6 @@ public class MonthlyCalendar extends LinearLayout {
         myListener.onDayClick(view, dateSelcted, month);
     }
 
-
     private void addDaysInCalendar(LayoutParams defaultButtonParams, Context context, DisplayMetrics metrics) {
         int daysCounter = 0;
 
@@ -233,6 +230,7 @@ public class MonthlyCalendar extends LinearLayout {
                 day.setLayoutParams(defaultButtonParams);
                 day.setTextSize((int) metrics.density * 8);
                 day.setSingleLine();
+//                if(day)
 
                 days[daysCounter] = day;
                 weeks[weekNumber].addView(day);
@@ -285,5 +283,4 @@ public class MonthlyCalendar extends LinearLayout {
         this.userMonth = userMonth;
         this.userYear = userYear;
     }
-
 }
